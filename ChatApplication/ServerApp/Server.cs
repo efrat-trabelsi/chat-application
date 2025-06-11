@@ -14,6 +14,7 @@ namespace ServerApp
         private bool _isRunning = false;
         private List<TcpClient> _clients = [];
         private Dictionary<TcpClient, string> _clientUsernames = [];
+        private readonly LetterFrequency _letterFreq = new();
 
         public Server(int port)
         {
@@ -128,6 +129,9 @@ namespace ServerApp
                 string fullMessage = $"{DateTime.Now:dd/MM/yyyy hh:mm:ss}, {username} - {messageContent}";
                 Broadcast(fullMessage, client);
             }
+
+            _letterFreq.AddMessage(message);
+            _letterFreq.PrintSummary();
         }
 
         private (bool isPrivate, string targetUser, string messageContent) ParseMessage(string message)
