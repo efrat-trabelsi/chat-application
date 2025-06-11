@@ -145,7 +145,7 @@ namespace ServerApp
             return (true, targetUser, messageContent);
         }
 
-        private TcpClient GetClientByUsername(string username)
+        private TcpClient? GetClientByUsername(string username)
         {
             lock (_clientUsernames)
             {

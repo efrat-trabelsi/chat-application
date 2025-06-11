@@ -9,9 +9,9 @@ namespace ClientApp
 {
     public class Client
     {
-        private TcpClient _client;
-        private NetworkStream _stream;
-        private string _username;
+        private TcpClient? _client;
+        private NetworkStream? _stream;
+        private string? _username;
 
         public void Connect(string host, int port)
         {
